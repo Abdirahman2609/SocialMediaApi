@@ -5,14 +5,9 @@ from typing import Optional
 from random import randrange
 import mysql.connector
 import time
+import config
 
 app = FastAPI()
-
-host = "localhost"
-user = "root"
-password = "aB2003ferry5"
-database = "fastapi"
-
 
 class Post(BaseModel):
     title: str
@@ -23,10 +18,10 @@ class Post(BaseModel):
 while True:
     try:
         connection = mysql.connector.connect(
-            host=host,
-            user=user,
-            password=password,
-            database=database
+            host= config.host,
+            user=config.user,
+            password=config.password,
+            database=config.database
         )
 
         cursor = connection.cursor()
